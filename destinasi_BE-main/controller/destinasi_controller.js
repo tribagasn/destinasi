@@ -37,10 +37,10 @@ const deleteDestinasi = async (req, res) => {
     if (result.affectedRows === 0) {
       return res.status(404).send("Destinasi not found");
     }
-    res.send(`Destinasi with ID ${id} has been deleted`);
+    res.json({ message: `Destinasi with ID ${id} has been deleted` });
   } catch (error) {
     console.error(error);
-    res.status(500).send("Internal Server Error");
+    res.status(500).json("Internal Server Error");
   }
 };
 
@@ -58,9 +58,40 @@ const getDestinasi = async (req, res) => {
   }
 };
 
+const editDestinasi = async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    let oldData;
+    const getOldData = await query("SELECT * FROM destinasi WHERE id = ?", [
+      id,
+    ]);
+    for (let i = 0; i < getOldData.length; i++) {
+      oldData = getOldData[i];
+    }
+    const {
+      tempat_wisata = oldData.tempat_wisata,
+      isi_konten = oldData.isi_konten,
+      map_url = oldData.map_url,
+      Gambar = oldData.Gambar,
+    } = req.body;
+    const result = await query(
+      "UPDATE destinasi SET tempat_wisata = ?, isi_konten = ?, map_url = ?, Gambar = ? WHERE id = ?",
+      [tempat_wisata, isi_konten, map_url, Gambar, id]
+    );
+    if (result.affectedRows === 0) {
+      return res.status(404).send("Destinasi not found");
+    }
+    res.send(`Destinasi with ID ${id} has been updated`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 module.exports = {
   getAllDestinasi,
   createDestinasi,
   deleteDestinasi,
   getDestinasi,
+  editDestinasi,
 };

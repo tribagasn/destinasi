@@ -213,7 +213,9 @@
         <div class="text-white text-center text-xl underline grow whitespace-nowrap">
           Kebijakan Privasi
         </div>
-        <div class="text-white text-center text-xl underline">Hubungi Kami</div>
+        <a href="https://api.whatsapp.com/send?phone=6281223427935&text=<%= encodeURIComponent('Halo saya ingin bertanya') %>">
+          <div class="text-white text-center text-xl underline">Hubungi Kami</div>
+      </a>
         <div class="text-white text-center text-xl underline grow whitespace-nowrap">
           Syarat dan Ketentuan
         </div>

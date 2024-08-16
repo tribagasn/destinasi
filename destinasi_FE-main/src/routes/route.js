@@ -83,6 +83,19 @@ const route = (app) => {
       res.status(500).send("Kesalahan Server Internal");
     }
   });
+  app.get("/admin/editDestinasi/:id", async (req, res) => {
+    try {
+      const destinasiId = req.params.id;
+      const destinasi = await getDestinasiByID(destinasiId);
+      if (!destinasi) {
+        return res.status(404).send("Destinasi tidak ditemukan");
+      }
+      res.render("admin/edit", { data: destinasi });
+    } catch (error) {
+      console.error("Error in route handler:", error);
+      res.status(500).send("Kesalahan Server Internal");
+    }
+  });
 };
 
 module.exports = { route };

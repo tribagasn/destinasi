@@ -4,6 +4,7 @@ const {
   createDestinasi,
   deleteDestinasi,
   getDestinasi,
+  editDestinasi,
 } = require("../controller/destinasi_controller");
 const {
   getAllTestimoni,
@@ -34,7 +35,7 @@ const routeHandler = async (app) => {
 
   route.post("/createDestinasi", createDestinasi);
 
-  route.delete("/deleteDestinasi/:id", deleteDestinasi);
+  route.post("/deleteDestinasi/:id", deleteDestinasi);
 
   route.get("/getAllTestimoni", getAllTestimoni);
 
@@ -49,6 +50,8 @@ const routeHandler = async (app) => {
   route.post("/deleteKontak/:id", deleteKontak);
 
   route.post("/getTokenMidtrans", getTokenMidtrans);
+
+  route.post("/editDestinasi/:id", editDestinasi);
 
   route.use(logger);
 

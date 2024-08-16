@@ -56,9 +56,10 @@
                 <p class="mb-4">
                     <%= it.data.isi_konten %>
                 </p>
-                <a href="https://api.whatsapp.com/send?phone=<?php echo $whatsapp_number; ?>&text=<?php echo urlencode($default_message); ?>"
-                    class="btn btn-primary">Pesan</a>
-                <button id="pay-button" class="btn btn-secondary mt-4">Pay with Midtrans</button>
+                <a href="https://api.whatsapp.com/send?phone=6281223427935&text=<%= encodeURIComponent('Halo, saya tertarik untuk memesan tiket masuk.') %>"
+                    class="btn btn-primary">Pesan whatsapp</a>
+                 
+                <button id="pay-button" class="btn btn-secondary mt-4">Pesan Sekarang Juga!</button>
             </div>
 
             <!-- Map Section -->
@@ -74,8 +75,36 @@
             class="text-black text-5xl font-medium self-stretch mt-20 mx-5 max-md:max-w-full max-md:text-4xl max-md:mr-2.5 max-md:mt-10 mb-10 ">
             Pertanyaan yang sering diajukan
         </div>
-        <div id="contentQnA1" class="mb-2"></div>
-        <div id="contentQnA2" class="mb-2"></div>
+        <div id="contentQnA1" class="mb-2"> 
+            <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-base-200">
+              <div class="collapse-title text-xl font-medium">
+                Apa saja tempat terbaik untuk pegunungan/pulau NTT?
+              </div>
+              <div class="collapse-content"> 
+                <p>Berikut adalah tempat terbaik untuk pegunungan/pulau di NTT:</p>
+                <ul>
+                      <li><a href="#" class="underline">Pulau Komodo</a></li>
+                      <li><a href="#" class="underline">Pulau Padar</a></li>
+                      <li><a href="#" class="underline">Pulau Kalimutu</a></li>
+                    </ul>
+              </div>
+            </div>
+          </div>
+          <div id="contentQnA2" class="mb-2" >
+            <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-base-200">
+              <div class="collapse-title text-xl font-medium">
+                Apa saja tempat terbaik untuk pantai di NTT?
+              </div>
+              <div class="collapse-content"> 
+                <p>Berikut adalah tempat terbaik untuk pantai di NTT:</p>
+                <ul>
+                      <li><a href="#" class="underline">Pantai Pink</a></li>
+                      <li><a href="#" class="underline">Pantai Kanawa</a></li>
+                      <li><a href="#" class="underline">Pantai Koka</a></li>
+                    </ul>
+              </div>
+            </div>
+          </div>
     </span>
     <span>
         <div class="items-center bg-black flex w-full flex-col -mt-1 px-20 py-9 max-md:max-w-full max-md:px-5">
@@ -88,7 +117,9 @@
                 <div class="text-white text-center text-xl underline grow whitespace-nowrap">
                     Kebijakan Privasi
                 </div>
-                <div class="text-white text-center text-xl underline">Hubungi Kami</div>
+                <a href="https://api.whatsapp.com/send?phone=6281223427935&text=<%= encodeURIComponent('Halo saya ingin bertanya') %>">
+                    <div class="text-white text-center text-xl underline">Hubungi Kami</div>
+                </a>
                 <div class="text-white text-center text-xl underline grow whitespace-nowrap">
                     Syarat dan Ketentuan
                 </div>

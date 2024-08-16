@@ -123,7 +123,7 @@
           <tbody>
             <% if(it.data.length> 0) { %> <% it.data.forEach((destinasi,index)=>
             { %>
-            <tr>
+            <tr id="row-<%= destinasi.id%>">
               <td><%= index + 1 %></td>
               <td><%= destinasi.tempat_wisata %></td>
               <td><%= destinasi.isi_konten %></td>
@@ -133,17 +133,17 @@
               <td><%= destinasi.map_url %></td>
               <td>
                 <a
-                  href="/admin/kelola/edit/<%= destinasi.id %>"
+                  href="/admin/editDestinasi/<%= destinasi.id %>"
                   type="button"
                   class="btn btn-warning btn-sm"
                   ><i class="fa fa-edit"></i> Edit</a
                 >
-                <a
-                  href="/admin/kelola/delete/<%= destinasi.id %>"
-                  type="button"
-                  class="btn btn-danger btn-sm"
-                  ><i class="fa fa-trash"></i> Hapus</a
+                <button
+                  onclick="deleteItem(`<%= destinasi.id %>`)"
+                  class="btn btn-danger"
                 >
+                  Hapus
+                </button>
               </td>
             </tr>
             <% }) %> <% } %>
@@ -152,5 +152,29 @@
       </div>
     </div>
     <div class="mb-5"></div>
+    <script>
+      async function deleteItem(itemId) {
+        const url = `http://localhost:3000/deleteDestinasi/${itemId}`;
+
+        try {
+          const response = await fetch(url, {
+            method: "POST",
+          });
+
+          if (response.ok) {
+            const result = await response.json();
+            alert("Item deleted successfully: " + result.message);
+            // Hapus baris dari tabel setelah sukses
+            document.querySelector(`#row-${itemId}`).remove();
+          } else {
+            const errorResult = await response.json();
+            alert("Failed to delete the item: " + errorResult.message);
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          alert("An error occurred while trying to delete the item.");
+        }
+      }
+    </script>
   </body>
 </html>
