@@ -17,6 +17,85 @@
         data-client-key="SB-Mid-client-4ZUq7COOYDwZQzqt"></script>
     <script type="module" src="vendor/midtrans/prosess-payment/payment.js"></script>
 
+    <style>
+        @media (max-width: 768px) {
+  .image-container {
+    height: 50vh; /* Sesuaikan lebih lanjut untuk layar sangat kecil */
+    
+  }
+  #destinasi-container p {
+    font-size: 3rem; /* Menyesuaikan ukuran font untuk layar kecil */
+  }
+
+  .h-12{
+    height: 40px; /* Perkecil tinggi logo */
+    margin-left: -10px; /* Geser logo sedikit ke kiri */
+  }
+
+  .edit-subimage {
+    bottom: 5%; /* Sesuaikan posisi untuk layar kecil */
+  }
+
+  .fade-image {
+    height: auto; /* Atur tinggi gambar agar proporsional pada layar kecil */
+  }
+
+  .navbar-center {
+    display: flex !important; /* Pastikan navbar tetap ditampilkan */
+    justify-content: center; /* Posisikan menu di tengah */
+    align-items: center; /* Posisikan menu secara vertikal di tengah navbar */
+    padding-top: 0px ; /* Berikan sedikit padding atas dan bawah untuk navbar */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;  
+  }
+  .menu.menu-horizontal {
+    flex-direction: row; /* Susun menu secara horizontal */
+    text-align: center; /* Pusatkan teks menu */
+    padding: 0; /* Hilangkan padding horizontal */
+    margin-left: auto; /* Pindahkan menu ke kanan */
+    margin-top: 30px; /* Geser menu sedikit ke bawah */
+  }
+
+  .btn {
+    margin-bottom:0 10px; /* Beri jarak antara tombol menu */
+  }
+
+  #subimage {
+    font-size: 2.5rem; /* Sesuaikan ukuran font sesuai kebutuhan */
+    color: white;
+    margin-bottom: 350px;
+}
+
+#map-container {
+    width: 300%; /* Lebar penuh dari kontainer */
+    height: 100px; /* Tinggi map */
+    display: flex; /* Menggunakan flexbox untuk memusatkan iframe */
+    justify-content: center; /* Memusatkan iframe secara horizontal */
+    margin-top: 20px; /* Jarak atas dari elemen sebelumnya */
+}
+
+#map-container iframe {
+    width: 100%; /* Pastikan iframe memenuhi lebar kontainer */
+    height: 100%; /* Pastikan iframe memenuhi tinggi kontainer */
+    border: 0; /* Hilangkan border */
+}
+        
+
+#tempat-wisata {
+    width: 700%; /* Memastikan elemen menggunakan lebar penuh kontainer */
+    padding: 0px; /* Padding kanan dan kiri untuk mengatur ruang di kanan */
+    box-sizing: border-box; /* Pastikan padding dan border dihitung dalam lebar elemen */
+}
+
+#tempat-wisata h1 {
+    font-size: 2rem; /* Menyesuaikan ukuran font untuk tampilan yang lebih baik pada perangkat kecil */
+    margin-bottom: 1rem; /* Mengatur jarak antara judul dan paragraf */
+}
+        }
+</style>
+
 
 </head>
 
@@ -49,21 +128,22 @@
     <span class="flex w-full flex-col mt-20 px-20 max-md:max-w-full max-md:px-5 mb-10">
         <div class="flex w-full">
             <!-- Description Section -->
-            <div class="w-1/2 p-8">
+            <div class="w-1/2 p-8" id="tempat-wisata">
                 <h1 class="text-3xl font-bold mb-4">
                     <%= it.data.tempat_wisata %>
                 </h1>
                 <p class="mb-4">
                     <%= it.data.isi_konten %>
                 </p>
-                <a href="https://api.whatsapp.com/send?phone=6281223427935&text=<%= encodeURIComponent('Halo, saya tertarik untuk memesan tiket masuk.') %>"
-                    class="btn btn-primary">Pesan whatsapp</a>
+                <a href="https://api.whatsapp.com/send?phone=6281223427935&text=Halo,%20saya%20tertarik%20untuk%20memesan%20tiket%20masuk.%0AIsi%20data%20diri%20anda%20:%0A------------------------------%0ANama%20:%0ANo%20hp%20:%0AEmail%20:%0APesanan%20Tiket%20:%0ABCA%20a/n%20TriBagas%20Nurkholis%205880340231%0ABukti%20Transfer%20:" class="btn btn-primary">Pesan whatsapp</a>
+
+
                  
                 <button id="pay-button" class="btn btn-secondary mt-4">Pesan Sekarang Juga!</button>
             </div>
 
             <!-- Map Section -->
-            <div class="w-1/2 relative">
+            <div class="w-1/2 relative" id="map-container">
                 <iframe src="<%= it.data.map_url %>" class="w-full" width="100%" height="450" style="border:0;"
                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -72,7 +152,7 @@
     </span>
     <span class="flex w-full flex-col px-20 max-md:max-w-full max-md:px-5 mb-10">
         <div
-            class="text-black text-5xl font-medium self-stretch mt-20 mx-5 max-md:max-w-full max-md:text-4xl max-md:mr-2.5 max-md:mt-10 mb-10 ">
+            class="text-white text-5xl font-medium self-stretch mt-20 mx-5 max-md:max-w-full max-md:text-4xl max-md:mr-2.5 max-md:mt-10 mb-10 ">
             Pertanyaan yang sering diajukan
         </div>
         <div id="contentQnA1" class="mb-2"> 

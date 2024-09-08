@@ -69,6 +69,7 @@
               name="gambar"
               id="Gambar"
               accept="image/*"
+              required
             />
           </div>
         </div>
@@ -109,20 +110,11 @@
           const getoldData = await fetch(
             `http://localhost:3000/getDestinasi/${id}`
           );
-          const oldData = await getoldData.json();
-          document.getElementById("Tempat_wisata").value =
-            oldData.tempat_wisata;
-          document.getElementById("Isi_konten").value = oldData.isi_konten;
-          document.getElementById("map_url").value = oldData.map_url;
           const data = {
-            tempat_wisata:
-              document.getElementById("Tempat_wisata").value ||
-              oldData.tempat_wisata,
-            isi_konten:
-              document.getElementById("Isi_konten").value || oldData.isi_konten,
-            gambar: document.getElementById("Gambar").value || oldData.gambar,
-            map_url:
-              document.getElementById("map_url").value || oldData.map_url,
+            tempat_wisata: document.getElementById("Tempat_wisata").value,
+            isi_konten: document.getElementById("Isi_konten").value,
+            Gambar: document.getElementById("Gambar").files[0].name,
+            map_url: document.getElementById("map_url").value,
           };
           const response = await fetch(
             `http://localhost:3000/editDestinasi/${id}`,

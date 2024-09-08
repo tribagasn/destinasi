@@ -31,7 +31,7 @@
                     <div style="margin-top:10px" class="form-group">
                         <div class="col-sm-12 controls">
                             <input type="submit" name="login" class="btn btn-success" value="Login"/>
-                            <button type="button" class="btn btn-secondary" style="background-color: #DD4A48;"><a href="../beranda.php" style="color:white;text-decoration:none">Beranda</a></button>
+                            <button type="button" class="btn btn-secondary" style="background-color: #DD4A48;"><a href="/" style="color:white;text-decoration:none">Beranda</a></button>
                         </div>
                     </div>
                         <div class="col-sm-12 controls">
